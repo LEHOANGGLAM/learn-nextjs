@@ -1,3 +1,4 @@
+import { MainLayout } from "@/components/layout";
 import { log } from "console";
 import { GetStaticProps, GetStaticPropsContext } from "next";
 import Link from "next/link";
@@ -10,7 +11,7 @@ export interface PostListPageProps {
 
 export default function PostPage({ posts }: PostListPageProps) {
   return (
-    <div>
+    <MainLayout>
       <h1>Post List Page</h1>
       <ul>
         {posts.map((post) => (
@@ -19,9 +20,11 @@ export default function PostPage({ posts }: PostListPageProps) {
           </li>
         ))}
       </ul>
-    </div>
+    </MainLayout>
   );
 }
+
+PostPage.Layout = MainLayout;
 
 export const getStaticProps: GetStaticProps<PostListPageProps> = async (
   context: GetStaticPropsContext
